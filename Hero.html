@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rentique - Premium Rentals for Every Occasion</title>
 
-  <!-- Tailwind & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +15,9 @@
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background: transparent !important;
+      /* Ensure these are truly transparent */
+      background-color: transparent !important;
+      background-image: none !important; /* Explicitly remove any default background image */
     }
 
     h1, h2, h3, .font-poppins {
@@ -35,7 +36,6 @@
 <body class="text-gray-800 bg-transparent">
 
   <main>
-    <!-- Hero Section -->
     <section class="text-white pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center bg-transparent">
       <div class="container mx-auto px-6 text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
