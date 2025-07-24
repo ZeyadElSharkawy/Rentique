@@ -12,9 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
-    body {
+    html, body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      background: transparent !important;
     }
 
     h1, h2, h3, .font-poppins {
@@ -30,7 +32,7 @@
   </style>
 </head>
 
-<body class="text-gray-800">
+<body class="text-gray-800 bg-transparent">
 
   <main>
     <!-- Hero Section -->
@@ -47,9 +49,9 @@
         <div class="flex justify-center items-center space-x-4">
           <a href="https://edu-rentique.odoo.com/shop" class="flex items-center bg-[#1A2F6B] text-white px-6 py-3 rounded-full hover:bg-[#6B92F2] transition-transform duration-300 transform hover:scale-105 shadow-lg text-lg font-semibold">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 7M7 13l-2 9m12-9l2 9m-6-9v9" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 7M7 13l-2 9m12-9l2 9m-6-9v9" />
             </svg>
-          Shop
+            Shop
           </a>
           <a href="https://wa.me/201234567890" target="_blank" class="flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-500 transition-transform duration-300 transform hover:scale-105 shadow-lg text-lg font-medium">
             Contact Us
@@ -58,14 +60,11 @@
               <path fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.5 15.1L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 7 11.9l.3.6-3.2.9-.4-.2a7.9 7.9 0 0 1-10.6-6.3A8 8 0 0 1 12 4z" clip-rule="evenodd"/>
             </svg>
           </a>
-
-
         </div>
       </div>
     </section>
   </main>
 
-  <!-- JavaScript -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const dynamicTextElement = document.getElementById('dynamic-event-type');
@@ -74,12 +73,9 @@
 
       function updateDynamicText() {
         dynamicTextElement.style.opacity = '0';
-
         setTimeout(() => {
           currentEventTypeIndex = (currentEventTypeIndex + 1) % eventTypes.length;
           dynamicTextElement.textContent = eventTypes[currentEventTypeIndex];
-
-          // Force reflow before fade in
           void dynamicTextElement.offsetWidth;
           dynamicTextElement.style.opacity = '1';
         }, 500);
@@ -90,3 +86,4 @@
   </script>
 </body>
 </html>
+
