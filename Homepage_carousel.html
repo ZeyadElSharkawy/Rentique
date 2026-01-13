@@ -118,4 +118,43 @@
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
 }
+
+/* =========================
+   MOBILE OPTIMIZATIONS
+   ========================= */
+@media (max-width: 768px) {
+
+  #scrolling-products-container {
+    margin: 1.5rem 0;
+  }
+
+  .scrolling-row {
+    padding: 0.75rem 0;
+  }
+
+  .image-item {
+    width: 85vw;              /* Almost full screen */
+    height: 240px;            /* Taller images */
+    margin: 0 10px;
+  }
+
+  .image-item img {
+    border-radius: 12px;
+  }
+
+  /* Disable hover scaling on mobile */
+  .image-item:hover {
+    transform: none;
+  }
+
+  /* Slow down animations for readability */
+  .left-scroll {
+    animation-duration: 45s;
+  }
+
+  .right-scroll {
+    animation-duration: 45s;
+  }
+}
+
 </style>
