@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Customers</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .customers-container {
+            padding: 50px 15px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .customers-container h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* Responsive Grid System */
+        .logo-wrapper {
+            display: grid;
+            /* Default: 1 column for small mobile */
+            grid-template-columns: 1fr; 
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .logo-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            height: 120px; /* Consistent height for alignment */
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo-box img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        /* Tablet Breakpoint (2 columns) */
+        @media (min-width: 480px) {
+            .logo-wrapper {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .customers-container h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Desktop Breakpoint (4 columns) */
+        @media (min-width: 992px) {
+            .logo-wrapper {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .customers-container {
+                padding: 80px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="customers-container">
+    <h2>Our Valued Customers</h2>
+    
+    <div class="logo-wrapper">
+        <div class="logo-box">
+            <img src="Gemini_Generated_Image_mb5h0wmb5h0wmb5h.jpg" alt="Value Language School">
+        </div>
+
+        <div class="logo-box">
+            <img src="WhatsApp Image 2026-01-13 at 12.24.22 PM.jpeg" alt="La Vanda Language School">
+        </div>
+
+        <div class="logo-box">
+            <img src="WhatsApp Image 2026-01-13 at 12.19.19 PM.jpeg" alt="Diwan Language School">
+        </div>
+
+        <div class="logo-box">
+            <img src="WhatsApp Image 2026-01-13 at 12.23.33 PM.jpeg" alt="Future Leaders School">
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
