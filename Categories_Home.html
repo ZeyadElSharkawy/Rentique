@@ -93,6 +93,15 @@
         }
     </style>
 </head>
+<script>
+  function sendHeight() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ 'frameHeight': height }, '*');
+  }
+  // Send height on load and on window resize
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+</script>
 <body class="p-4 sm:p-6 md:p-8">
 
     <section class="max-w-7xl mx-auto py-8">
