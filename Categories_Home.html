@@ -19,19 +19,44 @@
             border: 1px solid transparent; /* Start with transparent border */
             position: relative; /* For potential future absolute positioning of elements */
             overflow: hidden; /* Ensures content stays within rounded corners */
-            /* Default for extra small screens (below sm): 2 columns */
-            width: calc(50% - 1.5rem); /* 2 columns, accounting for gap-6 (1.5rem) */
-            flex-shrink: 0; /* Prevent cards from shrinking below their content size */
+
+            /* Flex sizing for responsive columns:
+               - default (extra-small / narrow): 2 columns (50%)
+               - sm and up: 3 columns (33.333%)
+               - very small screens: 1 column (100%) via media query below
+            */
+            flex: 0 0 calc(50% - 1.5rem);
+            max-width: calc(50% - 1.5rem);
+            box-sizing: border-box;
         }
 
         /* For small screens (sm) and up: 3 columns */
         @media (min-width: 640px) { /* sm breakpoint and up */
             .category-card {
-                /* Calculation: (100% - 2 * gap_size) / 3 = (100% - 2 * 2rem) / 3 = (100% - 4rem) / 3 */
-                width: calc(33.333% - 1.333rem); /* 3 columns, accounting for gap-8 (2rem) */
+                /* Calculation: (100% - 2 * gap_size) / 3 */
+                flex: 0 0 calc(33.333% - 1.333rem);
+                max-width: calc(33.333% - 1.333rem);
             }
         }
-        /* No need for md, lg, xl breakpoints as we want 3 columns consistently from sm up */
+
+        /* Very small screens (phones) — single column for readability */
+        @media (max-width: 420px) {
+            .category-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+                width: 100%;
+            }
+            .category-card {
+                padding: 1rem; /* Slightly smaller padding on very small screens */
+            }
+            .category-card img {
+                width: 64px;
+                height: 64px;
+            }
+            .category-card h3 {
+                font-size: 1rem;
+            }
+        }
 
         .category-card:hover {
             transform: translateY(-8px); /* More pronounced lift */
@@ -49,14 +74,11 @@
             height: 80px; /* Adjusted height to 80px */
             margin-bottom: 1rem; /* Equivalent to mb-4 in Tailwind */
             object-fit: contain; /* Ensures the image fits without cropping */
-            /* Removed liquid glass effect properties */
             transition: all 0.3s ease-in-out; /* Keep transition for general smoothness */
         }
         .category-card:hover img {
             transform: scale(1.05); /* Keep slight scale on hover for a dynamic feel */
-            /* Removed specific box-shadow for hover */
         }
-
 
         /* Specific gradient for each card for the background */
         .card-gradient-1 { background: linear-gradient(135deg, #A78BFA, #6366F1); } /* purple-400 to indigo-500 - Drama */
@@ -65,6 +87,19 @@
         .card-gradient-4 { background: linear-gradient(135deg, #EF4444, #EC4899); } /* red-400 to pink-500 - Egyptian */
         .card-gradient-5 { background: linear-gradient(135deg, #3B82F6, #06B6D4); } /* blue-400 to cyan-500 - Cocktail */
         .card-gradient-6 { background: linear-gradient(135deg, #A855F7, #D946EF); } /* purple-500 to fuchsia-600 - Accessories */
+
+        /* Make anchors fully clickable blocks and preserve accessible focus */
+        .category-card {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .category-card:focus {
+            outline: 3px solid rgba(255,255,255,0.18);
+            outline-offset: 4px;
+        }
 
     </style>
 </head>
@@ -77,38 +112,38 @@
         <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
 
             <!-- Category Card 1: Drama Costumes -->
-            <a href="https://edu-rentique.odoo.com/shop/category/drama-costumes-1" target="_top" class="category-card rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center card-gradient-1">
-                <img src="icons8-curtains-100.png" alt="Drama Costumes Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=🎭';">
+            <a href="https://edu-rentique.odoo.com/shop/category/drama-costumes-1" target="_top" aria-label="Drama Costumes" class="category-card card-gradient-1 rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center">
+                <img src="icons8-curtains-100.png" alt="Drama Costumes Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=%F0%9F%8E%AD';">
                 <h3 class="text-xl font-semibold">Drama Costumes</h3>
             </a>
 
             <!-- Category Card 2: Dancing Shows -->
-            <a href="https://edu-rentique.odoo.com/shop/category/dancing-shows-4" target="_top" class="category-card rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center card-gradient-2">
-                <img src="icons8-dancing-100.png" alt="Dancing & Shows" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=�';">
+            <a href="https://edu-rentique.odoo.com/shop/category/dancing-shows-4" target="_top" aria-label="Dancing & Shows" class="category-card card-gradient-2 rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center">
+                <img src="icons8-dancing-100.png" alt="Dancing & Shows" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=%F0%9F%92%83';">
                 <h3 class="text-xl font-semibold">Dancing & Shows</h3>
             </a>
 
             <!-- Category Card 3: Cultural Wear -->
-            <a href="https://edu-rentique.odoo.com/shop/category/culture-wear-2" target="_top" class="category-card rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center card-gradient-3">
-                <img src="icons8-sombrero-100.png" alt="Cultural Wear Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=👘';">
+            <a href="https://edu-rentique.odoo.com/shop/category/culture-wear-2" target="_top" aria-label="Cultural Wear" class="category-card card-gradient-3 rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center">
+                <img src="icons8-sombrero-100.png" alt="Cultural Wear Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=%F0%9F%91%98';">
                 <h3 class="text-xl font-semibold">Cultural Wear</h3>
             </a>
 
             <!-- Category Card 4: Egyptian Wear -->
-            <a href="https://edu-rentique.odoo.com/shop/category/egyptian-wear-5" target="_top" class="category-card rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center card-gradient-4">
-                <img src="icons8-pyramids-100.png" alt="Egyptian Wear Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=👑';">
+            <a href="https://edu-rentique.odoo.com/shop/category/egyptian-wear-5" target="_top" aria-label="Egyptian Wear" class="category-card card-gradient-4 rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center">
+                <img src="icons8-pyramids-100.png" alt="Egyptian Wear Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=%F0%9F%91%91';">
                 <h3 class="text-xl font-semibold">Egyptian Wear</h3>
             </a>
 
             <!-- Category Card 5: Classic & Elegant -->
-            <a href="https://edu-rentique.odoo.com/shop/category/classic-elegant-3" target="_top" class="category-card rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center card-gradient-5">
-                <img src="icons8-tailors-dummy-48.png" alt="Cocktail Dresses Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=👗';">
+            <a href="https://edu-rentique.odoo.com/shop/category/classic-elegant-3" target="_top" aria-label="Classic & Elegant" class="category-card card-gradient-5 rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center">
+                <img src="icons8-tailors-dummy-48.png" alt="Cocktail Dresses Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=%F0%9F%91%97';">
                 <h3 class="text-xl font-semibold">Classic & Elegant</h3>
             </a>
 
             <!-- Category Card 6: Accessories -->
-            <a href="https://edu-rentique.odoo.com/shop/category/accessories-6" target="_top" class="category-card rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center card-gradient-6">
-                <img src="icons8-shopping-bag-100.png" alt="Accessories Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=⌚';">
+            <a href="https://edu-rentique.odoo.com/shop/category/accessories-6" target="_top" aria-label="Accessories" class="category-card card-gradient-6 rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 text-center">
+                <img src="icons8-shopping-bag-100.png" alt="Accessories Icon" onerror="this.src='https://placehold.co/100x100/FFFFFF/000000?text=%E2%8C%9A';">
                 <h3 class="text-xl font-semibold">Accessories</h3>
             </a>
 
